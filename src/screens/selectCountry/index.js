@@ -65,7 +65,7 @@ class SelectCounry extends Component {
 
   filterCoutries = text => {
     const target = text.toLowerCase()
-    const list = this.state.items
+    const list = countries
     const filteredList = list.filter(({name}) =>
       name.toLowerCase().match(target)
     )
