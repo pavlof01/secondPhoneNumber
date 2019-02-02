@@ -190,6 +190,7 @@ class SelectPlan extends Component {
 
 
   render() {
+    const { navigation } = this.props
     return (
       <SafeAreaView style={styles.safeAreaView}>
       <View style={{flex: 1}}>
@@ -225,7 +226,7 @@ class SelectPlan extends Component {
         </View>
       </View>
       <View style={{flex: 0.4}}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('SelectCountry')}>
           <LinearGradient
             start={{x: 0, y: 0}} end={{x: 1, y: 0}}
             colors={['#0876d7', '#35bcfe']}

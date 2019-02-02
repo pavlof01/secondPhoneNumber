@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import { withNavigation } from 'react-navigation'
 
 const styles = StyleSheet.create({
   cotainer: {
@@ -44,10 +45,11 @@ const styles = StyleSheet.create({
 
 class CountryItem extends Component {
   render() {
+    const { navigation } = this.props
     const { name, code } = this.props.item
     const co = String(code.toLowerCase())
     return (
-      <TouchableOpacity onPress={() => console.warn("object")}>
+      <TouchableOpacity onPress={() => navigation.navigate('SelectPlan')}>
         <View style={styles.cotainer}>
           <Image 
               style={styles.image} 
@@ -67,4 +69,4 @@ class CountryItem extends Component {
   }
 }
 
-export default CountryItem
+export default withNavigation(CountryItem) 
