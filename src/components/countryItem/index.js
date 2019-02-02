@@ -53,7 +53,7 @@ class CountryItem extends Component {
               style={styles.image} 
               source={{uri:`https://www.countryflags.io/${co}/flat/64.png`}} />
           <View style={styles.textContainer}>
-            <Text style={styles.name}>{name}</Text>
+            <Text numberOfLines={1} style={styles.name}>{name}</Text>
             <Text style={styles.calls}>CALLS</Text>
           </View>
           <View style={styles.arrowContainer}>
