@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, View, SafeAreaView, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import Slider from 'react-native-app-intro-slider';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -7,23 +7,23 @@ const slides = [
   {
     key: 'somethun',
     title: 'Quick setup, good defaults',
-    text: 'React-native-app-intro-slider is easy to setup with a small footprint and no dependencies. And it comes with good default layouts!',
-    icon: 'ios-images-outline',
-    colors: ['#63E2FF', '#B066FE'],
+    text: '3 days free, than $7.99/wk,\n if not cancelled',
+    image: require('../../../assets/icons/call-answer.png'),
+    colors: ['#3a5bce', '#27acf9'],
   },
   {
     key: 'somethun1',
     title: 'Super customizable',
-    text: 'The component is also super customizable, so you can adapt it to cover your needs and wants.',
-    icon: 'ios-options-outline',
-    colors: ['#A3A1FF', '#3A3897'],
+    text: '3 days free, than $7.99/wk,\n if not cancelled',
+    image: require('../../../assets/icons/call-answer.png'),
+    colors: ['#3a5bce', '#27acf9'],
   },
   {
     key: 'somethun2',
     title: 'No need to buy me beer',
-    text: 'Usage is all free',
-    icon: 'ios-beer-outline',
-    colors: ['#29ABE2', '#4F00BC'],
+    text: '3 days free, than $7.99/wk,\n if not cancelled',
+    image: require('../../../assets/icons/call-answer.png'),
+    colors: ['#3a5bce', '#27acf9'],
   },
 ];
 
@@ -37,13 +37,6 @@ const styles = StyleSheet.create({
     fontWeight: '600'
   },
   mainContent: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-around',
-  },
-  image: {
-    width: 320,
-    height: 320,
   },
   text: {
     color: 'rgba(255, 255, 255, 0.8)',
@@ -61,6 +54,25 @@ const styles = StyleSheet.create({
   cardsContainer: {
     flex: 0.4,
     flexDirection: 'row'
+  },
+  mostPopularContainer: {
+    position: 'absolute', 
+    width: '100%', 
+    top: -9, 
+    zIndex: 1, 
+    textAlign: 'center', 
+    alignItems: 'center', 
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0)'
+  },
+  mostPopular: {
+    backgroundColor: '#2fbeff',
+    textAlign: 'center',
+    padding: 3,
+    borderRadius: 10,
+    color: '#fff',
+    fontSize: 12,
+    fontWeight: '600'
   },
   btn: {
     paddingHorizontal: 30,
@@ -124,6 +136,30 @@ const card = StyleSheet.create({
   }
 })
 
+const slide = StyleSheet.create({
+  number: {
+    color: '#fff',
+    fontSize: 18,
+    textAlign: 'center'
+  },
+  title: {
+    color: '#fff',
+    fontSize: 25,
+    textAlign: 'center',
+    fontWeight: '700',
+    marginTop: 15
+  },
+  text: {
+    color: '#fff',
+    fontSize: 15,
+    textAlign: 'center'
+  },
+  image: {
+    width: 50,
+    height: 50,
+  },
+})
+
 
 class SelectPlan extends Component {
 
@@ -133,14 +169,20 @@ class SelectPlan extends Component {
         paddingTop: props.topSpacer,
         paddingBottom: props.bottomSpacer,
         width: props.width,
-        height: props.height,
+        flex: 1
       }]}
       colors={props.colors}
       start={{x: 0, y: .1}} end={{x: .1, y: 1}}
     >
-      {/* <Ionicons style={{ backgroundColor: 'transparent' }} name={props.icon} size={200} color="white" /> */}
-      <View>
-        <Text style={styles.title}>{props.title}</Text>
+    <View>
+      <Text style={slide.number}>+1 858-264-0510</Text>
+      <Text style={slide.title}>Real Number</Text>
+      <Text style={slide.text}>Contact anyone with your real number</Text>
+    </View>
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Image style={slide.image} source={props.image} />
+    </View>
+      <View style={{marginBottom: 30}}>
         <Text style={styles.text}>{props.text}</Text>
       </View>
     </LinearGradient>
@@ -154,10 +196,14 @@ class SelectPlan extends Component {
         <Slider
           slides={slides}
           renderItem={this._renderItem}
-          bottomButton
+          hideNextButton
+          hideDoneButton
         />
       </View>
       <View style={styles.cardsContainer}>
+      <View style={styles.mostPopularContainer}>
+        <Text style={styles.mostPopular}>Most Popular</Text>
+      </View>
         <View style={card.container}>
           <Text style={card.numOfMonths}>3</Text>
           <Text style={card.months}>months</Text>
@@ -178,7 +224,7 @@ class SelectPlan extends Component {
           <Text style={card.cost}>$59.99</Text>
         </View>
       </View>
-      <View style={{flex: 0.5}}>
+      <View style={{flex: 0.4}}>
         <TouchableOpacity>
           <LinearGradient
             start={{x: 0, y: 0}} end={{x: 1, y: 0}}

@@ -13,7 +13,7 @@ const RootStack = createStackNavigator(
     },
   },
   {
-    initialRouteName: 'SelectCountry',
+    initialRouteName: 'SelectPlan',
     headerMode: 'none ',
     gesturesEnabled: false,
     navigationOptions: {
